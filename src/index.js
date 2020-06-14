@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld'
 ReactDOM.render(
     <React.StrictMode>
         <HelloWorld/>
-    </React.StrictMode>, document.getElementById(app)
+    </React.StrictMode>, document.getElementById('app')
 )
 
 
