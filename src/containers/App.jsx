@@ -9,60 +9,42 @@ import Footer from '../components/Footer'
 import '../assets/styles/App.scss';
 
 const App = () => {
-    const [ videos, setVideos ] = useState([]);
-    const API = 'http://localhost:3000/initalState';
+    const [ videos, setVideos ] = useState({ mylist: [], trends: [], originals: []})
+    // const API = 'http://localhost:3000/initalState';
     useEffect(() => {
-        fetch(API)
+        fetch('http://localhost:3000/initalState')
             .then(response => response.json())
             .then(data => setVideos(data))
     }, []);
-
-    console.log(videos);
-
+console.log(videos);
 
     return (
         <div className="App">
             <Header/>
             <Search/>
 
-            <Categories title="My list">
-                <Carousel>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-                    <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
-
-                </Carousel>
-            </Categories>
+            {videos.mylist?.length > 0 &&
+                <Categories title="My own list">
+                    <Carousel>
+                        <CarouselItem />
+                    </Carousel>
+                </Categories>
+            }
 
             <Categories title="Trens">
                 <Carousel>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-                    <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
-
+                    {videos.trends?.map(item =>
+                        <CarouselItem key={item.id} { ...item} />
+                    )}
                 </Carousel>
             </Categories>
 
             <Categories title="Original from PlatziVideo">
                 <Carousel>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
-                    <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                    { videos.originals?.map(item => (
+                        <CarouselItem key={item.id} { ...item} />
+                    )) }
+                    <CarouselItem />
 
                 </Carousel>
             </Categories>
