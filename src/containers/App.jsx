@@ -13,19 +13,44 @@ const App = () => (
         <Header/>
         <Search/>
 
-        <Categories>
+        <Categories title="My list">
             <Carousel>
-                <CarouselItem/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
+                <CarouselItem url="https://s3.amazonaws.com/mundo-bucket-s3/wp-content/uploads/2018/01/07123638/jenselter4.jpg"/>
 
-                <CarouselItem/>
+            </Carousel>
+        </Categories>
 
-                <CarouselItem/>
-                <CarouselItem/>
-                <CarouselItem/>
-                <CarouselItem/>
-                <CarouselItem/>
-                <CarouselItem/>
-                <CarouselItem/>
+        <Categories title="Trens">
+            <Carousel>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+                <CarouselItem url="https://ejerciciosencasa.es/wp-content/uploads/2014/04/jen-selter-la-mejor-cola-de-instagram9oki.jpg"/>
+
+            </Carousel>
+        </Categories>
+
+        <Categories title="Original from PlatziVideo">
+            <Carousel>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
+                <CarouselItem url="https://pbs.twimg.com/media/BjM30DbIYAAjGWs.jpg"/>
 
             </Carousel>
         </Categories>
