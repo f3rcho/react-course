@@ -5,9 +5,7 @@ import NotFoundMessage from '../components/NotFoundMessage';
 
 const NotFound =() => (
     <React.Fragment>
-        <Header/>
         <NotFoundMessage/>
-        <Footer/>
     </React.Fragment>
 
 );
