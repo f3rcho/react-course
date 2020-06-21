@@ -13,10 +13,8 @@ const API = 'http://localhost:3000/initialState'
 const Home = () => {
     const initialState = useInitialState(API)
     return (
-        <div className="App">
-            <Header/>
+        <>
             <Search/>
-
             {initialState.mylist.length > 0 &&
                 <Categories title="My own list">
                     <Carousel>
@@ -40,9 +38,7 @@ const Home = () => {
                     )}
                 </Carousel>
             </Categories>
-
-            <Footer/>
-        </div>
+        </>
     )
 }
 
