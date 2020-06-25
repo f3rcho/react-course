@@ -4,13 +4,12 @@ import { Provider } from 'react-redux';
 // logic to store
 import { createStore } from 'redux';
 import reducer from './reducers'
-
 import App from './routes/App';
 
 const initialState = {
     "user": {},
     "playing": {},
-    "mylist": [],
+    "myList": [],
     "trends": [
         {
             "id": 2,
@@ -177,6 +176,6 @@ const store = createStore(reducer, initialState);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <App />
     </Provider>, document.getElementById('app')
 );
