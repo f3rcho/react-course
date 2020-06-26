@@ -10,6 +10,9 @@ const Header = props => {
     const { user } = props;
     const hasUser = Object.keys(user).length > 0;
     
+    const handleLogout = () => {
+        props.logoutRequest({})
+    }
     return (
         <header className="header">
 
@@ -25,14 +28,21 @@ const Header = props => {
                     <p>Perfil</p>
                 </div>
                 <ul>
-                    <li>
-                    <Link to="/register">
-                        Cuenta
-                    </Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Iniciar Sesión</Link>
-                    </li>
+                    {hasUser ?
+                        <li> <a href="/">{user.name}</a></li>
+                        : null
+                    }
+
+                    {hasUser ?
+                        <li><a href="#logout" onClick={handleLogout}>Log Out</a></li>
+                        :
+                        <li>
+                            <Link to="/login">
+                                Sign in
+                            </Link>
+                        </li>
+                    }
+
                 </ul>
             </div>
         </header>
