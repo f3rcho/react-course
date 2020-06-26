@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../assets/styles/components/Login.scss'
-import googleIcon from '../assets/static/google-Icon.png'
-import twitterIcon from '../assets/static/twitter-Icon.png'
+import { loginRequest } from '../actions';
+import '../assets/styles/components/Login.scss';
+import googleIcon from '../assets/static/google-Icon.png';
+import twitterIcon from '../assets/static/twitter-Icon.png';
 
-const Login = () => {
+// sending form throw props
+const Login = props => {
     const [form, setValues] = useState({
         email: '',
     });
 
     const handleInput = event => {
         setValues({
-        // called to save information
             ...form,
-            // dynamic form to obtain the info according to the name
             [event.target.name]: event.target.value
         })
     }
-    //transmit the info
+
     const handleSubmit = event => {
-        // to prevent sending parameters through the url
         event.preventDefault();
-        console.log(form);
+    // passing the form throw props
+        props.loginRequest(form);
+    // redireccting to home
+        props.history.push('/');
     }
 
     return(
@@ -70,4 +73,8 @@ const Login = () => {
     )
 }
 
-export default Login;
+const mapDispatchToProps = {
+    loginRequest,
+};
+
+export default connect(null, mapDispatchToProps)(Login)
