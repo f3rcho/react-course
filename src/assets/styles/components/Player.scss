@@ -1,21 +1,12 @@
 video {
-    // object-fit: cover;
-    // width: 100vw;
-    // height: 100vh;
-    // z-index: 0;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-
     object-fit: cover;
-    width: 50vw;
-    height: 50vh;
+    width: 100vw;
+    height: 100vh;
     z-index: 0;
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
-  }
-  
+}
   video:hover .Player-back {
     display: block;
   }
@@ -37,4 +28,3 @@ video {
     outline: 0;
     cursor: pointer;
   }
-/*--------------------------------*/
