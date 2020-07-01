@@ -10,7 +10,7 @@ const Player = props => {
     const hasPlaying = Object.keys(props.playing).length > 0
     console.log(hasPlaying);
     console.log(id);
-    
+
     //transmimt the action effectt using hooks
     useEffect(()=> {
         props.getVideoSource(id);
