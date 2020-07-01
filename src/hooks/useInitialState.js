@@ -7,6 +7,7 @@ const useInitialState = (API) => {
         fetch(API)
             .then(response => response.json())
             .then(data => setVideos(data))
+            .catch(() => console.log('Failed connetion with API'))
     }, []);
     return videos;
 };

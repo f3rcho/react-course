@@ -23,7 +23,14 @@ const reducer = (state, action) => {
         case 'REGISTER_REQUEST':
             return {
                 ...state,
-                user: action.payload,
+                user: asction.payload,
+            }
+        case 'GET_VIDEO_SOURCE':
+            return {
+                ...state,
+                playing: state.trends.find(item => item.id === Number(action.playload))
+                || state.originals.find(item => item.id === Number(action.payload))
+                || [],
             }
         default:
             return state;
