@@ -1,19 +1,52 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
+import { searchVideo } from '../actions';
 import '../assets/styles/components/Search.scss';
+import Categories from './Categories';
+import Carousel from './Carousel';
+import CarouselItem from './CarouselItem';
 
 
-const Search = ({ isHome }) => {
+const Search = (props) => {
+    const { isHome } = props;
+    // const hasSearch = Object.keys(searchList).length > 0;
+
     const inputStyle = classNames('input', {
-        isHome
+        isHome,
     })
-    
+
+    const handleInput = event => {
+        props.searchVideo(event.target.value)
+    }
+
+    // const searchStyle = classNames('categories', {
+    //     isSearch,
+    // })
+    // console.log(searchList);
+
     return (
-        <section className="main">
-            <h2 className="main__title">¿Qué quieres ver hoy?</h2>
-            <input type="text" className={inputStyle} placeholder="Buscar..."/>
-        </section>
+        <div>
+            <section className="main">
+                <h2 className="main__title">¿Qué quieres ver hoy?</h2>
+                <input
+                    type="text"
+                    className={inputStyle}
+                    onChange={handleInput}
+                    placeholder="Buscar..."
+                />
+            </section>
+        </div>
     )
 }
+// const mapStateToProps = state => {
+//     return {
+//         searchList: state.searchList,
+//     }
+// }
 
-export default Search;
+const mapDispatchToProps = {
+    searchVideo,
+}
+
+export default connect(null, mapDispatchToProps)(Search)

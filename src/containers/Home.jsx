@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Search from '../components/Search';
 import Categories from '../components/Categories'
@@ -7,40 +7,52 @@ import CarouselItem from '../components/CarouselItem'
 import '../assets/styles/App.scss';
 
 
-const Home = ({ myList, trends, originals }) => {
+const Home = ({ myList, trends, originals, search }) => {
     return (
-        <>
-            <Search isHome />
-            {myList.length > 0 &&
-                <Categories title="Mis favoritos">
+        <div className="App">
+            <Search  isHome />
+            {search.length > 0 && (
+                <Categories title="Search">
                     <Carousel>
-                        {myList.map(item =>
+                        {search.map(item => (
                             <CarouselItem 
                             key={item.id} 
                             { ...item} 
-                            isList
                             />
-                        )}
+                        ))}
                     </Carousel>
                 </Categories>
-            }
+            )}
+            {myList.length > 0 && (
+                <Categories title="Mis favoritos">
+                    <Carousel>
+                        {myList.map(item => (
+                            <CarouselItem 
+                            key={item.id} 
+                            { ...item} 
+                            isList={true}
+                            />
+                        ))}
+                    </Carousel>
+                </Categories>
+            )}
 
             <Categories title="Tendencias">
                 <Carousel>
-                    {trends.map(item =>
+                    {trends.map(item => (
                         <CarouselItem key={item.id} { ...item} />
-                    )}
+                    ))}
                 </Carousel>
             </Categories>
 
             <Categories title="Originales de PlatziVideo">
                 <Carousel>
-                    {originals.map(item =>
+                    {originals.map(item => (
                         <CarouselItem key={item.id} { ...item} />
-                    )}
+                    ))}
                 </Carousel>
             </Categories>
-        </>
+        </div>
     )
 }
 
@@ -49,6 +61,7 @@ const mapStateToProps = state => {
         myList: state.myList,
         trends: state.trends,
         originals: state.originals,
+        search: state.search,
     }
 }
 
