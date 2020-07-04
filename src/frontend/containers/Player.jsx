@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getVideoSource } from '../actions';
 // import { Redirect } from 'react-router-dom'
-import NotFound from '../containers/NotFound';
+import NotFound from './NotFound';
 import '../assets/styles/components/Player.scss';
 
 const Player = props => {
