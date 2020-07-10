@@ -37,5 +37,5 @@ app.get('*', (req, res) => {
 });
 
 const server = app.listen(PORT, () => {
-        console.log(`Server listen on port http://localhost:${server.address().PORT}`);
+        console.log(`Server listen on port http://localhost:${server.address().port}`);
 });
