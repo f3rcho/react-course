@@ -31,11 +31,8 @@
     "webpack": "^4.43.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "start:dev": "nodemon src/server/index.js",
-    "build": "webpack --mode production",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack-cli --config webpack.config.js",
+    "start:dev": "nodemon src/server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
