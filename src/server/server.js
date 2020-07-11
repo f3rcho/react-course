@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 import webpack from 'webpack';
+import helmet from 'helmet';
 import React from 'react';
 // to server strings on server-side
 import { renderToString } from 'react-dom/server';
@@ -30,6 +31,15 @@ if (ENV === 'development') {
 
     app.use(webpackDevMiddleware(compiler, serverConfig));
     app.use(webpackHotMiddleware(compiler));
+}   else {
+    app.use(express.static(`${__dirname}/public`));
+    // Helmet helps you secure your Express apps by setting various HTTP headers.
+    // Settings by default
+    app.use(helmet());
+    // In short: Helmet’s crossdomain middleware prevents Adobe Flash and Adobe Acrobat from loading content on your site.
+    app.use(helmet.permittedCrossDomainPolicies());
+    // The Hide Powered-By middleware removes the X-Powered-By header to make it slightly harder for attackers to see what potentially-vulnerable technology powers your site.
+    app.disable('x-powered-by');
 }
 const setResponse = (html, preloadedState) => {
     return (`
@@ -66,7 +76,7 @@ const renderApp = (req, res) => {
     res.send(setResponse(html, preloadedState));
 };
 
-app.get('*', renderApp)
+app.get('*', renderApp);
 
 const server = app.listen(PORT, () => {
         console.log(`Server listen on port http://localhost:${server.address().port}`);
