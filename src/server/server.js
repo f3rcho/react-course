@@ -1,6 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
 import webpack from 'webpack';
+import React from 'react';
+// to server strings on server-side
+import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+// receive the routes array to render
+import { renderRoutes } from 'react-router-config';
+import { StaticRouter } from 'react-router-dom';
+import serverRoutes from '../frontend/routes/serverRoutes';
+import reducer from '../frontend/reducers';
+import initialState from '../frontend/initialState';
+
 
 dotenv.config();
 
@@ -18,10 +30,9 @@ if (ENV === 'development') {
     app.use(webpackDevMiddleware(compiler, serverConfig));
     app.use(webpackHotMiddleware(compiler));
 }
-
-
-app.get('*', (req, res) => {
-    res.send( `<!DOCTYPE html>
+const setResponse = (html) => {
+    return (`
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -30,11 +41,26 @@ app.get('*', (req, res) => {
         <title>Platzi Video</title>
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app">${html}</div>
         <script src="assets/app.js" type="text/javascript"></script>
     </body>
-    </html>`);
-});
+    </html>
+    `);
+};
+
+const renderApp = (req, res) => {
+    const store = createStore(reducer, initialState);
+    const html = renderToString(
+        <Provider store={store}>
+            <StaticRouter location={req.url} context={{}}>
+                {renderRoutes(serverRoutes)}
+            </StaticRouter>
+        </Provider>,
+    );
+    res.send(setResponse(html));
+};
+
+app.get('*', renderApp)
 
 const server = app.listen(PORT, () => {
         console.log(`Server listen on port http://localhost:${server.address().port}`);
