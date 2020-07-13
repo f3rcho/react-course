@@ -38,9 +38,13 @@ module.exports = {
                 vendors: {
                     name: 'vendors',
                     chunks: 'all',
-                    reuseExistingchunk: true,
+                    reuseExistingChunk: true,
                     priority: 1,
-                    filename: isDev ? 'assets/chunk.js' : 'assets/chunk-[hash].js',
+                    filename: isDev ? 'assets/vendor.js' : 'assets/vendor-[hash].js',
+                    test(module, chunks) {
+                        const name = module.nameForCondition && module.nameForCondition();
+                        return chunks.some(chunk => chunk.name  !== 'vendors' && /[\\/]node_modules[\\/]/.test(name))
+                    }
                 },
             },
         },
