@@ -24,6 +24,19 @@
       "import"
     ],
     "rules": {
+      // "jsx-a11y/label-has-associated-control": [ 2, {
+      //   "labelComponents": ["CustomInputLabel"],
+      //   "labelAttributes": ["label"],
+      //   "controlComponents": ["CustomInput"],
+      //   "assert": "both",
+      //   "depth": 3
+      // }],
+      "react/jsx-props-no-spreading": [ 1, {
+        "html": "ignore",
+        "custom": "ignore",
+        "explicitSpread": "ignore",
+        "exceptions": ["Image", "img"]
+    }],
       "react/jsx-filename-extension": 0,
       "array-bracket-spacing": 2,
       "arrow-body-style": 0,

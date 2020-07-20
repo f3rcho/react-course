@@ -1,13 +1,15 @@
 import React from 'react';
-import '../assets/styles/components/NotFound.scss'
+import '../assets/styles/components/NotFound.scss';
 
-const NotFound = () => (
-        <section className="error">
-            <div className="error__main">
-                <h1 className="animated pulse">404</h1>
-                <label>Page not found</label>
-            </div>
-        </section>
-);
+const NotFoundMessage = () => {
+  return (
+    <section className='error'>
+      <div className='error__main'>
+        <h1 className='animated pulse'>404</h1>
 
-export default NotFound;
+        <h2>Page not found</h2>
+      </div>
+    </section>
+  );
+};
+export default NotFoundMessage;

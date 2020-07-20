@@ -5,7 +5,7 @@ import { Router } from 'react-router';
 // logic to store
 import { createStore, compose } from 'redux';
 import { createBrowserHistory } from 'history';
-import reducer from './reducers'
+import reducer from './reducers';
 import App from './routes/App';
 
 const history = createBrowserHistory();
@@ -16,9 +16,9 @@ const store = createStore(reducer, preloadedState, composeEnhancers());
 delete window.__PRELOADED_STATE__;
 
 ReactDOM.hydrate(
-    <Provider store={store}>
-        <Router history={history} >
-            <App />
-        </Router>
-    </Provider>, document.getElementById('app')
+  <Provider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>, document.getElementById('app'),
 );
