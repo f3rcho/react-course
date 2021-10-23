@@ -70,3 +70,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 =======
 # react-course
 >>>>>>> 108c661c4a6290c80e0299b38948014ec177c6f2
+>>>>>>> Update, push comments to run pipeline in vercel
